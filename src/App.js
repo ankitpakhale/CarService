@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import About from "./Component/About";
+import BookService from "./Component/BookService";
+import Contact from "./Component/Contact";
+import Furnitures from "./Component/Furnitures";
+import Index from "./Component/Index";
+import Login from "./Component/Login";
+import Register from "./Component/Register";
+
+import Navbar from "./Layout/Navbar";
+import Footer from "./Layout/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <main className="py-3">
+          <Routes>
+            <Route path="/about" exact element={<About />} />
+            <Route path="/bookservice" exact element={<BookService />} />
+            <Route path="/contact" exact element={<Contact />} />
+            <Route path="/furnitures" exact element={<Furnitures />} />
+            <Route path="" exact element={<Index />} />
+            <Route path="/login" exact element={<Login />} />
+            <Route path="/Register" exact element={<Register />} />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
+    </>
   );
 }
 
